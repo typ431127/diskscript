@@ -29,7 +29,7 @@ directory: # 挂载目录
     alert: true   
     scripts: # 执行脚本
      - "/data/scripts/nginx-log.sh"
-  - directory: "/data/logs/ets2/"
+  - directory: "/data/logs/xxxxx/"
     threshold: 5g # 限制
     scripts: # 执行脚本
      - "find /data/logs/xxx -mtime +7 -delete"

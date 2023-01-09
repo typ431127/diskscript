@@ -2,6 +2,7 @@ package diskscript
 
 import (
 	"context"
+	"fmt"
 	"github.com/shirou/gopsutil/disk"
 	"log"
 )
@@ -10,6 +11,7 @@ func (conf *YamlConfig) MountScripts(ctx context.Context) {
 	log.Println("开始挂载检查")
 	for _, c := range conf.Mount {
 		diskusage, err := disk.Usage(c.Mount)
+		fmt.Println(diskusage.Used)
 		if err != nil {
 			log.Fatalf("挂载点%s错误:%s", c.Mount, err)
 		} else {
