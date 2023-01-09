@@ -11,7 +11,7 @@ func (conf *YamlConfig) MountScripts(ctx context.Context) {
 	for _, c := range conf.Mount {
 		diskusage, err := disk.Usage(c.Mount)
 		if err != nil {
-			log.Fatalf("挂载点%s错误:%s", c.Mount, err)
+			log.Printf("挂载点%s错误:%s\n", c.Mount, err)
 		} else {
 			PercentageOfOccupancy := float64(diskusage.Used) / float64(diskusage.Total) * 100
 			if PercentageOfOccupancy > float64(c.Threshold) {

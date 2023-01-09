@@ -11,6 +11,7 @@ import (
 
 func Execute(configfile string) {
 	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 	log.Println("读取配置文件: ", configfile)
 	file, err := ioutil.ReadFile(configfile)
 	if err != nil {
@@ -27,7 +28,6 @@ func Execute(configfile string) {
 	Conf.MountScripts(ctx)
 	Conf.DirectoryScripts(ctx)
 	Conf.FileScripts(ctx)
-	cancel()
 }
 
 func init() {

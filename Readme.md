@@ -6,7 +6,8 @@
 - 二进制直接使用
 
 > 测试版本，谨慎使用  
-> 仅在Centos7下测试通过
+> 仅在Centos7下测试通过   
+> Windows WSL环境下次磁盘容量获取不正确
 
 `config.yml` 配置文件示例
 ```yml
