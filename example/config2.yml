@@ -1,0 +1,23 @@
+console: true # script 脚本输出
+alert: # alertmanager
+  enable: true
+  url: "http://alertmanager:9093"
+  labels: ["env=dev","wsl=centos7"] # 全局labels
+mount: # 挂载设备
+  - mount: "/"
+    threshold: 2 # 限制 60%
+    alert: true
+    alertname: "根磁盘挂载超过限制"
+    labels: ["file=config2.yml"]
+    scripts: # 执行脚本
+      - "/tmp/1.sh args1"
+      - "/tmp/2.sh"
+      - "/tmp/1.sh args2"
+  - mount: "/boot"
+    threshold: 60
+    scripts:
+      - "/tmp/1.sh pars"
+  - mount: "/home"
+    threshold: 60
+    scripts:
+      - "/tmp/1.sh pars"

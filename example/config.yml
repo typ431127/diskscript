@@ -1,0 +1,59 @@
+console: true # script 脚本输出
+alert: # alertmanager
+  enable: true
+  url: "http://192.168.100.192:9093"
+  labels: ["env2=dev"] # 全局labels
+mount: # 挂载设备
+  - mount: "/"
+    threshold: 60 # 限制 60%
+    alert: true
+    alertname: "根磁盘挂载超过限制"
+    labels: ["env=dev"]
+    scripts: # 执行脚本
+      - "/tmp/1.sh args1"
+      - "/tmp/2.sh"
+  - mount: "/boot"
+    threshold: 60
+    scripts:
+      - "/tmp/1.sh pars"
+  - mount: "/home"
+    threshold: 60
+    scripts:
+      - "/tmp/1.sh pars"
+directory:
+  - directory: "/data/logs/nginx/89.log"
+    threshold: 20m # 限制
+    alert: true
+    scripts: # 执行脚本
+      - "cat /dev/null > /data/logs/nginx/blog_access.log && cat /dev/null > /data/logs/nginx/access_music.log"
+      - "/data/scripts/1.py"
+  - directory: "/data/logs"
+    threshold: 1g # 限制
+    scripts: # 执行脚本
+      - "/tmp/1.sh pars"
+      - "/data/scripts/1.py"
+  - directory: "/data/mysql-backu"
+    threshold: 100m
+    scripts:
+      - "/tmp/1.sh pars"
+      - "/data/scripts/1.py"
+      - "/data/scripts/logs-rm.sh"
+  - directory: "/data/mysql-backup"
+    threshold: 100m
+    scripts:
+      - "/tmp/1.sh pars"
+      - "/data/scripts/1.py"
+      - "/data/scripts/logs-rm.sh"
+file:
+  - file: "/mnt/d/ISO/Windows.iso"
+    threshold: 5g # 限制
+    alert: true
+    scripts: # 执行脚本
+      - "cat /dev/null > /data/logs/nginx/blog_access.log && cat /dev/null > /data/logs/nginx/access_music.log"
+      - "/data/scripts/1.py"
+  - file: "/mnt/d/ISO/ubuntu-21.10-desktop-amd64.iso"
+    threshold: 4g # 限制
+    alert: true
+    scripts: # 执行脚本
+      - "cat /dev/null > /data/logs/nginx/blog_access.log && cat /dev/null > /data/logs/nginx/access_music.log"
+      - "/data/scripts/1.py"

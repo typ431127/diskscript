@@ -5,6 +5,9 @@
 - 支持发送到alertmanager报警，自定义labels和报警名称
 - 二进制直接使用
 
+> 测试版本，谨慎使用  
+> 仅在Centos7下测试通过
+
 `config.yml` 配置文件示例
 ```yml
 console: true  # 是否输出脚本执行信息

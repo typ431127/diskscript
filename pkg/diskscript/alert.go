@@ -180,10 +180,10 @@ func (c *Mount) AlertAdd(ctx context.Context, PercentageOfOccupancy int64) bool 
 	}
 	err := alertcli.addAlert(ctx)
 	if err != nil {
-		log.Printf("%s err %s", alertname, err)
+		log.Printf("%s 发送失败 %s", alertname, err)
 		return false
 	}
-	log.Printf("%s success", alertname)
+	log.Printf("%s 发送成功", alertname)
 	return true
 }
 
@@ -207,10 +207,10 @@ func (c *Directory) AlertAdd(ctx context.Context, filesizeformat string) bool {
 	}
 	err := alertcli.addAlert(ctx)
 	if err != nil {
-		log.Printf("%s err %s", alertname, err)
+		log.Printf("%s 发送失败 %s", alertname, err)
 		return false
 	}
-	log.Printf("%s success", alertname)
+	log.Printf("%s 发送成功", alertname)
 	return true
 }
 
