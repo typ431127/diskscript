@@ -3,7 +3,6 @@ package diskscript
 import (
 	"context"
 	"gopkg.in/yaml.v3"
-	"io/ioutil"
 	"log"
 	"net/url"
 	"os"
@@ -13,7 +12,7 @@ func Execute(configfile string) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	log.Println("读取配置文件: ", configfile)
-	file, err := ioutil.ReadFile(configfile)
+	file, err := os.ReadFile(configfile)
 	if err != nil {
 		log.Fatalf("yaml文件读取失败%s", err)
 	}
